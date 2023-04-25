@@ -1,9 +1,6 @@
 # Kernel_driver_hack
 > Android/Linux Kernel dirver read and write  memory.
 
-
-> linux kernel read/write process memory
-
 ##### ~~暂时无法读取bss段内存~~
 
 注意：未实现多物理页页读，读取内存过长时会出现错误
