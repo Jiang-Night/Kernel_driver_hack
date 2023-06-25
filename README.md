@@ -13,4 +13,6 @@
 
 使用`dmesg`查看驱动日志
 
+Google官方编译内核教程(只提供GKI内核编译)：`https://source.android.com/docs/setup/build/building-kernels?hl=zh-cn`
+
 现已在telegram中发现号称`小迷糊` `雪花`等群聊，滥用本项目模块，做各种游戏辅助外挂，并且一部分工作室拿本项目源码去收费，请勿拿本项目用作非法用途或商用，本项目开源仅供学习交流，并且源码写的比较烂，还希望各位大佬提交fork优化本驱动模块
