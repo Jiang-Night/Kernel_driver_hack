@@ -1,5 +1,5 @@
 # Kernel_driver_hack
-> Android/Linux Kernel dirver read and write  memory.
+> Android/Linux Kernel driver read and write  memory.
 
 ##### ~~暂时无法读取bss段内存~~
 
@@ -15,7 +15,6 @@
 
 Google官方编译内核教程(只提供GKI内核编译)：`https://source.android.com/docs/setup/build/building-kernels?hl=zh-cn`
 
-现已在telegram中发现号称`小迷糊` `雪花`等群聊，滥用本项目模块，做各种游戏辅助外挂，并且一部分工作室拿本项目源码去收费，以及出现`wanbai`开源模块 皆是复制本项目源码以作者的名号到处宣传 本作者只有一个名字：`JiagNight`，共创者  [Rogo](https://github.com/rogxo/kernel_hack)。以及主要测试以及机型适配提供： [LuMing](https://github.com/smm800)
-
+现已在telegram中发现号称`小迷糊` `雪花`等群聊，滥用本项目模块，做各种游戏辅助外挂，并且一部分工作室拿本项目源码去收费，以及出现`wanbai`开源模块 皆是复制本项目源码以作者的名号到处宣传 本作者只有一个名字：`JiagNight`，共创者  [Rogo](https://github.com/rogxo/kernel_hack)。以及主要测试以及机型适配提供： [LuMing](https://github.com/smm800)，感谢大佬的帮助:[小黑](https://github.com/GameCheatExpert)
 
 请勿拿本项目用作非法用途或商用，本项目开源仅供学习交流，并且源码写的比较烂，还希望各位大佬提交fork优化本驱动模块
