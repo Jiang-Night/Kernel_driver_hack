@@ -29,6 +29,7 @@ long dispatch_ioctl(struct file* const file, unsigned int const cmd, unsigned lo
         if (copy_from_user(key, (void __user*)arg, sizeof(key)-1) != 0) {
             return -1;
         }
+    }
     switch (cmd) {
         case OP_READ_MEM:
             {
