@@ -66,6 +66,7 @@ long dispatch_ioctl(struct file* const file, unsigned int const cmd, unsigned lo
             break;
     }
     return 0;
+  }
 }
 
 struct file_operations dispatch_functions = {
