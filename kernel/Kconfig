@@ -1,0 +1,5 @@
+config KERNEL_HACK
+	tristate "Kernel Hack Driver"
+	default y
+	help
+	This is the kernel hack driver for android system.
