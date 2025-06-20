@@ -19,6 +19,7 @@ uintptr_t get_module_base(pid_t pid, char *name)
 	struct task_struct *task;
 	struct mm_struct *mm;
 	struct vm_area_struct *vma;
+	uintptr_t base_addr = 0;
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0))
 	struct vma_iterator vmi;
 #endif
@@ -26,19 +27,18 @@ uintptr_t get_module_base(pid_t pid, char *name)
 	pid_struct = find_get_pid(pid);
 	if (!pid_struct)
 	{
-		return false;
+		return 0;
 	}
 	task = get_pid_task(pid_struct, PIDTYPE_PID);
 	if (!task)
 	{
-		return false;
+		return 0;
 	}
 	mm = get_task_mm(task);
 	if (!mm)
 	{
-		return false;
+		return 0;
 	}
-	mmput(mm);
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0))
 	vma_iter_init(&vmi, mm, 0);
@@ -56,9 +56,12 @@ uintptr_t get_module_base(pid_t pid, char *name)
 				file_path(vma->vm_file, buf, ARC_PATH_MAX - 1);
 			if (!strcmp(kbasename(path_nm), name))
 			{
-				return vma->vm_start;
+				base_addr = vma->vm_start;
+				break;
 			}
 		}
 	}
-	return 0;
+
+	mmput(mm);
+	return base_addr;
 }
