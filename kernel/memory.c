@@ -179,6 +179,7 @@ bool read_process_memory(
 	struct mm_struct *mm;
 	struct pid *pid_struct;
 	phys_addr_t pa;
+	bool result = false;
 
 	pid_struct = find_get_pid(pid);
 	if (!pid_struct)
@@ -195,13 +196,25 @@ bool read_process_memory(
 	{
 		return false;
 	}
-	mmput(mm);
+
 	pa = translate_linear_address(mm, addr);
-	if (!pa)
+	if (pa)
 	{
-		return false;
+		result = read_physical_address(pa, buffer, size);
 	}
-	return read_physical_address(pa, buffer, size);
+	else
+	{
+		if (find_vma(mm, addr))
+		{
+			if (clear_user(buffer, size) == 0)
+			{
+				result = true;
+			}
+		}
+	}
+
+	mmput(mm);
+	return result;
 }
 
 bool write_process_memory(
@@ -215,6 +228,7 @@ bool write_process_memory(
 	struct mm_struct *mm;
 	struct pid *pid_struct;
 	phys_addr_t pa;
+	bool result = false;
 
 	pid_struct = find_get_pid(pid);
 	if (!pid_struct)
@@ -231,11 +245,13 @@ bool write_process_memory(
 	{
 		return false;
 	}
-	mmput(mm);
+
 	pa = translate_linear_address(mm, addr);
-	if (!pa)
+	if (pa)
 	{
-		return false;
+		result = write_physical_address(pa, buffer, size);
 	}
-	return write_physical_address(pa, buffer, size);
+
+	mmput(mm);
+	return result;
 }
